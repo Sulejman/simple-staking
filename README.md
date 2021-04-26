@@ -1,4 +1,4 @@
-#Simple Staking Contract
+# Simple Staking Contract
 
 Prepare environment:
 ```aidl
