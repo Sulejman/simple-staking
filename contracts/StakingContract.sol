@@ -70,7 +70,8 @@ contract StakingContract is Ownable, ReentrancyGuard {
     }
 
     function viewStakedAmount(address stakeholder) public view returns (uint256 stakedAmount) {
-        return stakingRecords[stakeholder].lastValue;
+        stakedAmount= stakingRecords[stakeholder].lastValue;
+        return stakedAmount;
     }
 
     function _calculateStakingPoints(address stakeholder) private view returns (uint256 _newPoints) {
