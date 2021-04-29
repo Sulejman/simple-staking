@@ -66,19 +66,16 @@ contract StakingContract is Ownable, ReentrancyGuard {
 
     function viewStakingPoints(address stakeholder) public view returns (uint256 points) {
         points = _calculateStakingPoints(stakeholder);
-        return points;
     }
 
     function viewStakedAmount(address stakeholder) public view returns (uint256 stakedAmount) {
         stakedAmount= stakingRecords[stakeholder].lastValue;
-        return stakedAmount;
     }
 
     function _calculateStakingPoints(address stakeholder) private view returns (uint256 _newPoints) {
         _newPoints = stakingRecords[stakeholder].lastPoints +
                     ((block.timestamp - stakingRecords[stakeholder].lastBlockTime) / stakingPeriod) *
                     stakingRecords[stakeholder].lastValue;
-        return _newPoints;
     }
 
     function _stake(uint256 amount) private nonReentrant {
